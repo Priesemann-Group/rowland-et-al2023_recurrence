@@ -1,0 +1,26 @@
+activate your custom bash:
+$ bash
+
+use the py37 environment in /home/loidolt/miniconda3:
+$ conda activate py37
+
+start a jupyter notebook on either rudabeh or tahmineh if you want to use the mpavich queue on either zal or sam; set the ip to 0.0.0.0 and define a port, use & to have it run in the background
+$ jupyter lab --ip=0.0.0.0 --port=8890 &
+
+use port forwarding on your local machine to connect to the jupyter notebook:
+$ ssh -L 8890:rudabeh001:8890 mpids
+(this requires you to define the hosts rudabeh001 and mpids in your local ssh settings)
+
+run the analysis:
+# start a cluster with start_cluster.ipynb
+# copy the scheduler ip-adress into the client settings in run_analysis.ipynb
+# run the analysis
+# save the results with an appropriate name
+
+plot the results:
+# 
+
+connect to the dask dashboard:
+$ ssh -L 8787:rudabeh001:8787 mpids ssh -L 8787:172.9.50.181:8787 rudabeh001 (scheduler IP in the second ssh command, dashboard port in all of them)
+
+c543ea8c6a2efac1a9412ed91b98990f0be55c72a2f3a667
