@@ -10,21 +10,6 @@ def factor_analysis(train_data, apply_data, n_factors, return_per_var_explained=
     # data has shape (time, neurons)
     transformer = FactorAnalysis(n_components=n_factors)  # , random_state=0)
     transformer = transformer.fit(train_data)
-
-    ## legacy code, returns only a single value
-    #shared_variance = np.sum(transformer.components_**2, axis=1)
-    #shared_var_exps = np.sum(shared_variance)
-    #individual_var_exps = np.sum(transformer.noise_variance_)
-    #per_var_explained = shared_var_exps/(shared_var_exps+individual_var_exps)*100
-    
-    #if return_per_var_explained:
-    #    return (
-    #        transformer.components_,
-    #        transformer.transform(apply_data),
-    #        transformer.mean_,
-    #        transformer.noise_variance_,
-    #        per_var_explained
-    #    )
     
     if return_per_var_explained:
         shared_var_exps = np.zeros(n_factors+1)
