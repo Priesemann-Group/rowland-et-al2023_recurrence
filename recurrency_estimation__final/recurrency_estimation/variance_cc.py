@@ -212,18 +212,6 @@ def var_cc_bias_corrected(session, trial_list, num_fits=10, n_choose=15):
         )
         return var_cc_one_fit, mean_var, mean_rho
 
-    """
-    var_cc_list = []
-    mean_var_list = []
-    for i in range(num_fits):
-        trials_chosen = np.random.choice(trial_list, size=n_choose, replace=False)
-        var_cc_one_fit, mean_var = var_cc_bias_corrected_one_fit(
-            session.isel(trial=trials_chosen).values
-        )
-
-        var_cc_list.append(var_cc_one_fit)
-        mean_var_list.append(mean_var)
-    """
     with ThreadPoolExecutor(max_workers=10) as executor:
         random_trials = [
             np.random.choice(trial_list, size=n_choose, replace=False)
